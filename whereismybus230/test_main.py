@@ -4,7 +4,7 @@ import datetime
 
 from dateutil.tz import tzfile
 from flask import json
-from main import app
+from .main import app
 import unittest
 from unittest.mock import patch
 
