@@ -4,7 +4,7 @@ import datetime
 
 from dateutil.tz import tzfile
 from flask import json
-from .main import app
+import starter
 import unittest
 from unittest.mock import patch
 
@@ -12,7 +12,7 @@ from unittest.mock import patch
 class MainApiTests(unittest.TestCase):
 
     def setUp(self):
-        self.app = app.test_client()
+        self.app = starter.app.test_client()
         self.app.testing = True
 
     @patch('sophiabus230.get_next_buses')
