@@ -1,4 +1,7 @@
 # whereismybus230
+
+[![Build Status](https://travis-ci.org/paraita/whereismybus230.svg?branch=master)](https://travis-ci.org/paraita/whereismybus230) [![Coverage Status](https://coveralls.io/repos/github/paraita/whereismybus230/badge.svg?branch=master)](https://coveralls.io/github/paraita/whereismybus230?branch=master)
+
 Transform the in-real-time bus 230 time table from the Conseil Général 06 website into a good citizen REST API.
 
 #Licence
