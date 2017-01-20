@@ -2,3 +2,4 @@ flask-restplus
 sophiabus230
 coverage
 coveralls
+gunicorn
