@@ -31,9 +31,7 @@ class HelloWorld(Resource):
     @api.response(200, 'Success', [BusPassage])
     def get(self):
         args = self.get_parser.parse_args()
-        print("stop_id={}".format(args['stop_id']))
         tt = sophiabus230.get_next_buses(stop_id=args['stop_id'])
-        print(tt)
         return [
             {
                 'bus_time': bus['bus_time'].isoformat(),

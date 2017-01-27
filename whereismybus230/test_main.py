@@ -49,6 +49,5 @@ class MainApiTests(unittest.TestCase):
         result = self.app.get('/bus230?stop_id=1939')
         json_data = json.loads(result.data)
         self.assertEqual(result.status_code, 200)
-        print("actual: {}".format(json_data))
         self.assertEqual(expected_tt, json_data)
 
