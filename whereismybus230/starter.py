@@ -31,11 +31,13 @@ class HelloWorld(Resource):
     @api.response(200, 'Success', [BusPassage])
     def get(self):
         args = self.get_parser.parse_args()
+        print("stop_id={}".format(args['stop_id']))
         tt = sophiabus230.get_next_buses(stop_id=args['stop_id'])
+        print(tt)
         return [
             {
                 'bus_time': bus['bus_time'].isoformat(),
-                'dest': str(bus['dest'], 'utf-8'),
+                'dest': str(bus['dest']),
                 'is_real_time': bus['is_real_time']
             }
             for bus in tt
