@@ -35,7 +35,7 @@ class HelloWorld(Resource):
         return [
             {
                 'bus_time': bus['bus_time'].isoformat(),
-                'dest': str(bus['dest'], 'utf-8'),
+                'dest': str(bus['dest']),
                 'is_real_time': bus['is_real_time']
             }
             for bus in tt

@@ -16,16 +16,15 @@ class MainApiTests(unittest.TestCase):
         self.app.testing = True
 
     @patch('sophiabus230.get_next_buses')
-    def test_get_no_buses(self, mock_bus):
+    def test_getNoBuses(self, mock_bus):
         mock_bus.return_value = []
-        result = self.app.get('/bus230')
+        result = self.app.get('/bus230?stop_id=1939')
         json_data = json.loads(result.data)
         self.assertEqual(json_data, [])
         self.assertEqual(result.status_code, 200)
 
     @patch('sophiabus230.get_next_buses')
-    def test_get(self, mock_bus):
-
+    def test_getBuses(self, mock_bus):
         expected_tt = [
             {'dest': 'Cathédrale-Vieille Ville',
              'is_real_time': True,
@@ -37,17 +36,18 @@ class MainApiTests(unittest.TestCase):
              }
             ]
         mock_bus.return_value = [
-            {'dest': b'Cath\xc3\xa9drale-Vieille Ville',
+            {'dest': 'Cathédrale-Vieille Ville',
              'is_real_time': True,
              'bus_time': datetime.datetime(2017, 1, 19, 17, 23, 6, 302989,
                                            tzinfo=tzfile('/usr/share/zoneinfo/Europe/Paris'))
              },
-            {'dest': b'Cath\xc3\xa9drale-Vieille Ville',
+            {'dest': 'Cathédrale-Vieille Ville',
              'is_real_time': False,
              'bus_time': datetime.datetime(2017, 1, 19, 17, 32)
              }
             ]
-        result = self.app.get('/bus230')
+        result = self.app.get('/bus230?stop_id=1939')
         json_data = json.loads(result.data)
-        self.assertEqual(json_data, expected_tt)
         self.assertEqual(result.status_code, 200)
+        self.assertEqual(expected_tt, json_data)
+
